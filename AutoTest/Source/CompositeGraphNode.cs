@@ -44,30 +44,30 @@ namespace XNode.AutoTest
             }
         }
 
-        protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        {
-            var nodeIndex = index;
-            var builtChildren = BuildChildren<T>(ref index);
-            return BuildNode(builtChildren, nodeIndex);
-        }
+        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
+        // {
+        //     var nodeIndex = index;
+        //     var builtChildren = BuildChildren<T>(ref index);
+        //     return BuildNode(builtChildren, nodeIndex);
+        // }
 
-        protected BehaviourTreeNode<T>[] BuildChildren<T>(ref int index)
-        {
-            var childrenNodes = new BehaviourTreeNode<T>[childrenCount];
-            for (var i = 0; i < childrenCount; i++)
-            {
-                var port = GetOutputPort(string.Format(ChildrenPortNameFormat, i));
-                var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
-                if (connectedNode != null)
-                {
-                    childrenNodes[i] = connectedNode.Build<T>(ref index);
-                }
-            }
+        // protected BehaviourTreeNode<T>[] BuildChildren<T>(ref int index)
+        // {
+        //     var childrenNodes = new BehaviourTreeNode<T>[childrenCount];
+        //     for (var i = 0; i < childrenCount; i++)
+        //     {
+        //         var port = GetOutputPort(string.Format(ChildrenPortNameFormat, i));
+        //         var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
+        //         if (connectedNode != null)
+        //         {
+        //             childrenNodes[i] = connectedNode.Build<T>(ref index);
+        //         }
+        //     }
 
-            return childrenNodes;
-        }
+        //     return childrenNodes;
+        // }
 
-        protected abstract BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T>[] children, int index);
+        // protected abstract BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T>[] children, int index);
         #endregion
 
         #region Private

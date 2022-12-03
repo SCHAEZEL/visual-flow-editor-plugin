@@ -21,22 +21,22 @@ namespace XNode.AutoTest
         #endregion
 
         #region Protected
-        protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        {
-            var nodeIndex = index;
-            var builtChild = BuildChild<T>(ref index);
-            return BuildNode<T>(builtChild, nodeIndex);
-        }
+        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
+        // {
+        //     var nodeIndex = index;
+        //     var builtChild = BuildChild<T>(ref index);
+        //     return BuildNode<T>(builtChild, nodeIndex);
+        // }
 
-        protected BehaviourTreeNode<T> BuildChild<T>(ref int index)
-        {
-            var port = GetOutputPort(string.Format(ChildPortNameFormat));
-            var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
+        // protected BehaviourTreeNode<T> BuildChild<T>(ref int index)
+        // {
+        //     var port = GetOutputPort(string.Format(ChildPortNameFormat));
+        //     var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
 
-            return connectedNode != null ? connectedNode.Build<T>(ref index) : null;
-        }
+        //     return connectedNode != null ? connectedNode.Build<T>(ref index) : null;
+        // }
 
-        protected abstract BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T> child, int nodeIndex);
+        // protected abstract BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T> child, int nodeIndex);
         #endregion
 
         #region Private

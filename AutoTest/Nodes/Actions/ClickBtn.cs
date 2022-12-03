@@ -17,9 +17,9 @@ namespace XNode.AutoTest
         public string ctrlName;
         public string btnText;
 
-        protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        {
-            return new ClickBtn() as BehaviourTreeNode<T>;
-        }
+        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
+        // {
+        //     return new ClickBtn() as BehaviourTreeNode<T>;
+        // }
     }
 }

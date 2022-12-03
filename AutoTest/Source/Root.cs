@@ -9,11 +9,12 @@ using XNode;
 
 namespace XNode.AutoTest
 {
-    public class Root : BehaviourTreeGraphNode
+    public class Root : Node
     {
-        protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        {
-            return new ClickBtn() as BehaviourTreeNode<T>;
-        }
+        // [Output] 
+        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
+        // {
+        //     return new ClickBtn() as BehaviourTreeNode<T>;
+        // }
     }
 }

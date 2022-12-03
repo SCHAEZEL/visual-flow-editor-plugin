@@ -16,30 +16,30 @@ namespace XNode.AutoTest
             set => isRoot = value;
         }
 
-        public BehaviourTreeNode<T> Build<T>(ref int index)
-        {
-            if (AllowedType == null || AllowedType.IsAssignableFrom(typeof(T)))
-            {
-#if UNITY_EDITOR
-                SetNodeIndexInBuildingGraph(index + 1);
-#endif
+        //         public BehaviourTreeNode<T> Build<T>(ref int index)
+        //         {
+        //             if (AllowedType == null || AllowedType.IsAssignableFrom(typeof(T)))
+        //             {
+        // #if UNITY_EDITOR
+        //                 SetNodeIndexInBuildingGraph(index + 1);
+        // #endif
 
-                index++;
-                return ProtectedBuild<T>(ref index);
-            }
+        //                 index++;
+        //                 return ProtectedBuild<T>(ref index);
+        //             }
 
-            return null;
-        }
+        //             return null;
+        //         }
 
-        [ContextMenu("Set as root")]
-        public void SetAsRoot()
-        {
-            BehaviourTreeGraph btGraph = graph as BehaviourTreeGraph;
-            btGraph.SetRoot(this);
+        // [ContextMenu("Set as root")]
+        // public void SetAsRoot()
+        // {
+        //     BehaviourTreeGraph btGraph = graph as BehaviourTreeGraph;
+        //     btGraph.SetRoot(this);
 
-            NodePort port = GetInputPort("parent");
-            port.Disconnect(port.Connection);
-        }
+        //     NodePort port = GetInputPort("parent");
+        //     port.Disconnect(port.Connection);
+        // }
 
         public virtual int Size => 1;
 
@@ -49,19 +49,19 @@ namespace XNode.AutoTest
         }
         #endregion
 
-        #region Protected
+        // #region Protected
 
-        protected virtual string NiceName => "";
+        // protected virtual string NiceName => "";
 
-        protected virtual Type AllowedType => null;
+        // protected virtual Type AllowedType => null;
 
-        protected abstract BehaviourTreeNode<T> ProtectedBuild<T>(ref int index);
+        // protected abstract BehaviourTreeNode<T> ProtectedBuild<T>(ref int index);
 
-        protected override void Init()
-        {
-            name = string.IsNullOrEmpty(NiceName) ? name : NiceName;
-        }
-        #endregion
+        // protected override void Init()
+        // {
+        //     name = string.IsNullOrEmpty(NiceName) ? name : NiceName;
+        // }
+        // #endregion
 
         #region Private
         [SerializeField, HideInInspector] bool isRoot;
@@ -70,18 +70,18 @@ namespace XNode.AutoTest
 
 #if UNITY_EDITOR
         #region Editor
-        public BehaviourTreeGraph BuildingGraph { get; set; }
+        // public BehaviourTreeGraph BuildingGraph { get; set; }
 
-        void SetNodeIndexInBuildingGraph(int index)
-        {
-            if (IsRoot == false)
-            {
-                var parentNode = GetInputPort("parent").Connection.node as BehaviourTreeGraphNode;
-                BuildingGraph = parentNode.BuildingGraph;
-            }
+        // void SetNodeIndexInBuildingGraph(int index)
+        // {
+        //     if (IsRoot == false)
+        //     {
+        //         var parentNode = GetInputPort("parent").Connection.node as BehaviourTreeGraphNode;
+        //         BuildingGraph = parentNode.BuildingGraph;
+        //     }
 
-            BuildingGraph.SetNodeIndex(GetInstanceID(), index);
-        }
+        //     BuildingGraph.SetNodeIndex(GetInstanceID(), index);
+        // }
         #endregion
 #endif
     }

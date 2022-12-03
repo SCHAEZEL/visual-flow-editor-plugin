@@ -16,9 +16,9 @@ namespace XNode.AutoTest
             return vector;
         }
 
-        protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        {
-            return new Succeeder() as BehaviourTreeNode<T>;
-        }
+        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
+        // {
+        //     return new Succeeder() as BehaviourTreeNode<T>;
+        // }
     }
 }

@@ -31,7 +31,7 @@ MonoBehaviour:
   uiName: Advice
   ctrlName: Button_OK/animation
   btnText: 
---- !u!114 &-5576416205034924228
+--- !u!114 &-3761474851562015107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +44,33 @@ MonoBehaviour:
   m_Name: Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -440, y: 56}
+  position: {x: -200, y: -40}
   ports:
     keys:
+    - input
+    - output
     - parent
     values:
+    - _fieldName: input
+      _node: {fileID: -3761474851562015107}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -3761474851562015107}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
     - _fieldName: parent
-      _node: {fileID: -5576416205034924228}
+      _node: {fileID: -3761474851562015107}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
@@ -74,8 +94,8 @@ MonoBehaviour:
   nodes:
   - {fileID: -7962872490116157301}
   - {fileID: 8510718907241408346}
-  - {fileID: -5576416205034924228}
-  root: {fileID: -5576416205034924228}
+  - {fileID: -3761474851562015107}
+  root: {fileID: -3761474851562015107}
 --- !u!114 &8510718907241408346
 MonoBehaviour:
   m_ObjectHideFlags: 0

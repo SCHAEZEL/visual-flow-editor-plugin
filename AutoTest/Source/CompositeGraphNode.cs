@@ -5,10 +5,24 @@ using UnityEngine;
 
 namespace XNode.AutoTest
 {
-    [NodeTint("#489250")]
+    [NodeTint("#2f4f32")]
+    [NodeWidth(250)]
+
     public abstract class CompositeGraphNode : BehaviourTreeGraphNode
     {
-        #region Public
+        [SerializeField, Input] public BehaviourTreeGraphConnection input;
+        [SerializeField] public string nodeId;
+        [SerializeField, Output(dynamicPortList = true)] List<BehaviourTreeGraphConnection> children;
+        // [SerializeField, Output] public BehaviourTreeGraphConnection output;
+
+        protected string scope = "node";
+        const string ChildrenPortNameFormat = "children {0}";
+        const string UidFormat = "CompositeNode_{0}";
+
+        /// <summary> 总Action节点个数 </summary>
+        static int nodeCount = 0;
+        int childrenCount;
+
         public override int Size
         {
             get
@@ -25,9 +39,11 @@ namespace XNode.AutoTest
                 return size + 1;
             }
         }
-        #endregion
 
-        #region Protected
+        public override string GetNodeScope()
+        {
+            return scope;
+        }
 
         protected override void Init()
         {
@@ -42,39 +58,8 @@ namespace XNode.AutoTest
                 if (port == null) break;
                 childrenCount++;
             }
+            nodeCount++;
+            nodeId = string.Format(UidFormat, nodeCount);
         }
-
-        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        // {
-        //     var nodeIndex = index;
-        //     var builtChildren = BuildChildren<T>(ref index);
-        //     return BuildNode(builtChildren, nodeIndex);
-        // }
-
-        // protected BehaviourTreeNode<T>[] BuildChildren<T>(ref int index)
-        // {
-        //     var childrenNodes = new BehaviourTreeNode<T>[childrenCount];
-        //     for (var i = 0; i < childrenCount; i++)
-        //     {
-        //         var port = GetOutputPort(string.Format(ChildrenPortNameFormat, i));
-        //         var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
-        //         if (connectedNode != null)
-        //         {
-        //             childrenNodes[i] = connectedNode.Build<T>(ref index);
-        //         }
-        //     }
-
-        //     return childrenNodes;
-        // }
-
-        // protected abstract BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T>[] children, int index);
-        #endregion
-
-        #region Private
-        [SerializeField, Output(dynamicPortList = true)] List<BehaviourTreeGraphConnection> children;
-        int childrenCount;
-
-        const string ChildrenPortNameFormat = "children {0}";
-        #endregion
     }
 }

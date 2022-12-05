@@ -1,24 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace XNode.AutoTest
 {
     [CreateNodeMenu("Action/Print")]
     public class Print : ActionGraphNode
     {
-        [Input] public float x, y, z;
-        [Output] public Vector3 vector;
+        public string text = "";
 
-        public override object GetValue(XNode.NodePort port)
+        public override Dictionary<string, string> GetProperties()
         {
-            vector.x = GetInputValue<float>("x", this.x);
-            vector.y = GetInputValue<float>("y", this.y);
-            vector.z = GetInputValue<float>("z", this.z);
-            return vector;
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            properties.Add("text", text);
+            return properties;
         }
-
-        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        // {
-        //     return new Print() as BehaviourTreeNode<T>;
-        // }
     }
 }

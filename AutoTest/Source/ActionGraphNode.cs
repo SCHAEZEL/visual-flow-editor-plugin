@@ -6,10 +6,16 @@ namespace XNode.AutoTest
     [NodeTint("#2e4e6b")]
     public abstract class ActionGraphNode : BehaviourTreeGraphNode
     {
-        #region Public
         [SerializeField, Input] public BehaviourTreeGraphConnection input;
         [SerializeField, Output] public BehaviourTreeGraphConnection output;
-        public string uid = AutoTestUtil.CreateNodeUID();
+        [SerializeField] public string nodeId;
+        protected string scope = "node";
+        const string ChildrenPortNameFormat = "children {0}";
+        const string UidFormat = "ActionNode_{0}";
+
+        /// <summary> 总Action节点个数 </summary>
+        static int nodeCount = 0;
+        int childrenCount;
 
         public override int Size
         {
@@ -23,35 +29,31 @@ namespace XNode.AutoTest
                     if (connectedNode == null) continue;
                     size += connectedNode.Size;
                 }
-
                 return size + 1;
             }
         }
-        #endregion
 
-        #region Protected
+        public override string GetNodeScope()
+        {
+            return scope;
+        }
 
-        // protected override void Init()
-        // {
-        //     base.Init();
-        //     // Calculate children count.
-        //     // note: it appears that xNode doesn't populate the children list on init.
-        //     // Which results in children.Count being 0.
-        //     childrenCount = 0;
-        //     while (true)
-        //     {
-        //         var port = GetOutputPort(string.Format(ChildrenPortNameFormat, childrenCount));
-        //         if (port == null) break;
-        //         childrenCount++;
-        //     }
-        // }
+        protected override void Init()
+        {
+            base.Init();
+            // Calculate children count.
+            // note: it appears that xNode doesn't populate the children list on init.
+            // Which results in children.Count being 0.
+            childrenCount = 0;
+            while (true)
+            {
+                var port = GetOutputPort(string.Format(ChildrenPortNameFormat, childrenCount));
+                if (port == null) break;
+                childrenCount++;
+            }
 
-        #endregion
-
-        #region Private
-        int childrenCount;
-
-        const string ChildrenPortNameFormat = "children {0}";
-        #endregion
+            nodeCount++;
+            nodeId = string.Format(UidFormat, nodeCount);
+        }
     }
 }

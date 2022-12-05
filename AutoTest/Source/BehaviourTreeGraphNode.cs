@@ -7,33 +7,21 @@ namespace XNode.AutoTest
 {
     public abstract class BehaviourTreeGraphNode : Node
     {
-        // [Input] BehaviourTreeNode input;
+        [SerializeField, HideInInspector] bool isRoot;
+        [SerializeField] static int numChildren = 0;
+        public virtual string nodeName => "DefaultNode";
+        public virtual int Size => 1;
 
-        #region Public
         public bool IsRoot
         {
             get => isRoot;
             set => isRoot = value;
         }
-        [HideInInspector] public string nodeName;
+
         public virtual Dictionary<string, string> GetProperties()
         {
             return new Dictionary<string, string>();
         }
-        //         public BehaviourTreeNode<T> Build<T>(ref int index)
-        //         {
-        //             if (AllowedType == null || AllowedType.IsAssignableFrom(typeof(T)))
-        //             {
-        // #if UNITY_EDITOR
-        //                 SetNodeIndexInBuildingGraph(index + 1);
-        // #endif
-
-        //                 index++;
-        //                 return ProtectedBuild<T>(ref index);
-        //             }
-
-        //             return null;
-        //         }
 
         // [ContextMenu("Set as root")]
         // public void SetAsRoot()
@@ -45,35 +33,33 @@ namespace XNode.AutoTest
         //     port.Disconnect(port.Connection);
         // }
 
-        public virtual int Size => 1;
+        /// <summary>
+        /// 导出节点位置的JSON
+        /// </summary>
+        /// <returns></returns>
+        public string GetNodeXYJson()
+        {
+            Hashtable pos = new Hashtable();
+            pos.Add("x", this.position.x);
+            pos.Add("y", this.position.y);
+            return StringUtil.HashtableToJson(pos);
+        }
 
         public override object GetValue(NodePort port)
         {
             return null;
         }
-        #endregion
 
-        // #region Protected
-
-        // protected virtual string NiceName => "";
-
-        // protected virtual Type AllowedType => null;
-
-        // protected abstract BehaviourTreeNode<T> ProtectedBuild<T>(ref int index);
+        public abstract string GetNodeScope();
 
         // protected override void Init()
         // {
-        //     name = string.IsNullOrEmpty(NiceName) ? name : NiceName;
+        // numChildren += 1;
+        // index = numChildren;
         // }
-        // #endregion
 
-        #region Private
-        [SerializeField, HideInInspector] bool isRoot;
-        // [SerializeField, Input] BehaviourTreeGraphConnection parent;
-        #endregion
 
 #if UNITY_EDITOR
-        #region Editor
         // public BehaviourTreeGraph BuildingGraph { get; set; }
 
         // void SetNodeIndexInBuildingGraph(int index)
@@ -86,7 +72,6 @@ namespace XNode.AutoTest
 
         //     BuildingGraph.SetNodeIndex(GetInstanceID(), index);
         // }
-        #endregion
 #endif
     }
 }

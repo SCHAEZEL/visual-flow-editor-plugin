@@ -8,7 +8,18 @@ namespace XNode.AutoTest
     [NodeTint("#6b2e53")]
     public abstract class DecoratorGraphNode : BehaviourTreeGraphNode
     {
-        #region Public
+        [SerializeField, Input] public BehaviourTreeGraphConnection input;
+        [SerializeField, Output] public BehaviourTreeGraphConnection output;
+        [SerializeField] public string nodeId;
+        protected string scope = "node";
+        const string UidFormat = "CompositeNode_{0}";
+        const string ChildPortNameFormat = "child";
+        const string ChildrenPortNameFormat = "children {0}";
+
+        /// <summary> 总Action节点个数 </summary>
+        static int nodeCount = 0;
+        int childrenCount;
+
         public override int Size
         {
             get
@@ -18,30 +29,27 @@ namespace XNode.AutoTest
                 return connectedNode == null ? 1 : connectedNode.Size + 1;
             }
         }
-        #endregion
 
-        #region Protected
-        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        // {
-        //     var nodeIndex = index;
-        //     var builtChild = BuildChild<T>(ref index);
-        //     return BuildNode<T>(builtChild, nodeIndex);
-        // }
+        public override string GetNodeScope()
+        {
+            return scope;
+        }
 
-        // protected BehaviourTreeNode<T> BuildChild<T>(ref int index)
-        // {
-        //     var port = GetOutputPort(string.Format(ChildPortNameFormat));
-        //     var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
-
-        //     return connectedNode != null ? connectedNode.Build<T>(ref index) : null;
-        // }
-
-        // protected abstract BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T> child, int nodeIndex);
-        #endregion
-
-        #region Private
-        [SerializeField, Output(dynamicPortList = false)] BehaviourTreeGraphConnection child;
-        const string ChildPortNameFormat = "child";
-        #endregion
+        protected override void Init()
+        {
+            base.Init();
+            // Calculate children count.
+            // note: it appears that xNode doesn't populate the children list on init.
+            // Which results in children.Count being 0.
+            childrenCount = 0;
+            while (true)
+            {
+                var port = GetOutputPort(string.Format(ChildrenPortNameFormat, childrenCount));
+                if (port == null) break;
+                childrenCount++;
+            }
+            nodeCount++;
+            nodeId = string.Format(UidFormat, nodeCount);
+        }
     }
 }

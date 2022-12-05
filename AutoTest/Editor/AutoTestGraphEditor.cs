@@ -1,11 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using XNodeEditor;
-using XUPorterJSON;
 #if UNITY_2019_1_OR_NEWER && USE_ADVANCED_GENERIC_MENU
 using GenericMenu = XNodeEditor.AdvancedGenericMenu;
 #endif
@@ -60,6 +58,8 @@ namespace XNode.AutoTest
                     var node = editor.CreateNode(typeof(ClickBtn), pos) as ClickBtn;
                     node.uiName = m["uiName"] as string;
                     node.ctrlName = m["ctrlName"] as string;
+                    node.recordTick = Convert.ToInt32(m["recordTick"]);
+                    node.eventType = m["eventType"] as string;
 
                     if (lastNode != null)
                     {

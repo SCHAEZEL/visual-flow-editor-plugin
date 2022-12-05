@@ -5,9 +5,16 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Decorators/CheckLevel")]
     public class CheckLevel : DecoratorGraphNode
     {
-        // protected override BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T> child, int nodeIndex)
-        // {
-        //     return new CheckLevel() as BehaviourTreeNode<T>;
-        // }
+        [SerializeField] public string desc = "检查角色等级";
+        public string op = ">";
+        public int value = 0;
+        public override Dictionary<string, string> GetProperties()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            properties.Add("attribName", attribName);
+            properties.Add("op", op);
+            properties.Add("value", value.ToString());
+            return properties;
+        }
     }
 }

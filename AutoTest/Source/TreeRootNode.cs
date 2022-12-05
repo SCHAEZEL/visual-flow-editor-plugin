@@ -18,9 +18,10 @@ namespace XNode.AutoTest
         static string VERSION = "1.0.0";
         public string title = "A behavior tree";
         public string description = "行为树demo";
-        protected string scope = "tree";
-        protected string nodeId = "Default_Tree_1";
-        [SerializeField, Output] BehaviourTreeGraphConnection child;
+        protected string scope { get { return "tree"; } }
+        protected string nodeId { get { return "Default_Tree_1"; } }
+        [SerializeField, Output]
+        BehaviourTreeGraphConnection child;
 
         /// <summary>
         /// Get tree root data.

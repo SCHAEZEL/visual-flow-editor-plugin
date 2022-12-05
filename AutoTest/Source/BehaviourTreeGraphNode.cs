@@ -15,7 +15,11 @@ namespace XNode.AutoTest
             get => isRoot;
             set => isRoot = value;
         }
-
+        [HideInInspector] public string nodeName;
+        public virtual Dictionary<string, string> GetProperties()
+        {
+            return new Dictionary<string, string>();
+        }
         //         public BehaviourTreeNode<T> Build<T>(ref int index)
         //         {
         //             if (AllowedType == null || AllowedType.IsAssignableFrom(typeof(T)))
@@ -65,7 +69,7 @@ namespace XNode.AutoTest
 
         #region Private
         [SerializeField, HideInInspector] bool isRoot;
-        [SerializeField, Input] BehaviourTreeGraphConnection parent;
+        // [SerializeField, Input] BehaviourTreeGraphConnection parent;
         #endregion
 
 #if UNITY_EDITOR

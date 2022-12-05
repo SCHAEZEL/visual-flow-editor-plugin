@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace XNode.AutoTest
@@ -9,6 +7,10 @@ namespace XNode.AutoTest
     public abstract class ActionGraphNode : BehaviourTreeGraphNode
     {
         #region Public
+        [SerializeField, Input] public BehaviourTreeGraphConnection input;
+        [SerializeField, Output] public BehaviourTreeGraphConnection output;
+        public string uid = AutoTestUtil.CreateNodeUID();
+
         public override int Size
         {
             get
@@ -29,20 +31,20 @@ namespace XNode.AutoTest
 
         #region Protected
 
-        protected override void Init()
-        {
-            base.Init();
-            // Calculate children count.
-            // note: it appears that xNode doesn't populate the children list on init.
-            // Which results in children.Count being 0.
-            childrenCount = 0;
-            while (true)
-            {
-                var port = GetOutputPort(string.Format(ChildrenPortNameFormat, childrenCount));
-                if (port == null) break;
-                childrenCount++;
-            }
-        }
+        // protected override void Init()
+        // {
+        //     base.Init();
+        //     // Calculate children count.
+        //     // note: it appears that xNode doesn't populate the children list on init.
+        //     // Which results in children.Count being 0.
+        //     childrenCount = 0;
+        //     while (true)
+        //     {
+        //         var port = GetOutputPort(string.Format(ChildrenPortNameFormat, childrenCount));
+        //         if (port == null) break;
+        //         childrenCount++;
+        //     }
+        // }
 
         #endregion
 

@@ -12,14 +12,21 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/ClickBtn")]
     public class ClickBtn : ActionGraphNode
     {
+        // [SerializeField, Input] public BehaviourTreeGraphConnection input;
+        // [SerializeField, Output] public BehaviourTreeGraphConnection output;
 
         public string uiName;
         public string ctrlName;
         public string btnText;
+        [HideInInspector] public string recordTick;
 
-        // protected override BehaviourTreeNode<T> ProtectedBuild<T>(ref int index)
-        // {
-        //     return new ClickBtn() as BehaviourTreeNode<T>;
-        // }
+        public override Dictionary<string, string> GetProperties()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            properties.Add("uiName", uiName);
+            properties.Add("ctrlName", uiName);
+            properties.Add("btnText", uiName);
+            return properties;
+        }
     }
 }

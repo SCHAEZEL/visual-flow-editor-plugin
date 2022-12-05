@@ -33,7 +33,7 @@ namespace XNode.AutoTest
         {
             base.AddContextMenuItems(menu, compatibleType, direction);
             menu.AddItem(new GUIContent("Import UI Record File"), false, ImportUIRecordFile, this);
-            menu.AddItem(new GUIContent("Export BT File"), false, ExportBTFile, this);
+            menu.AddItem(new GUIContent("Export Behavior Tree File"), false, ExportBehaviorTreeFile, this);
         }
         /// <summary>
         /// Import UI record file by UIRecordMgr over JSON format.
@@ -42,7 +42,7 @@ namespace XNode.AutoTest
         static void ImportUIRecordFile(object userData)
         {
             NodeGraphEditor editor = userData as NodeGraphEditor;
-            string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
+            string dir = Path.Combine(Application.dataPath.Replace("Assets", "Behavior3/UIRecord"));
             string path = EditorUtility.OpenFilePanel("Import UI Record File", dir, "json");
             if (path.Length != 0)
             {
@@ -77,11 +77,11 @@ namespace XNode.AutoTest
         /// Export behavior tree with JSON format.
         /// </summary>
         /// <param name="userData"></param>
-        static void ExportBTFile(object userData)
+        static void ExportBehaviorTreeFile(object userData)
         {
             NodeGraphEditor editor = userData as NodeGraphEditor;
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.OpenFilePanel("Import UI Record File", dir, "json");
+            string path = EditorUtility.OpenFilePanel("Export Behavior Tree File", dir, "json");
             if (path.Length != 0)
             {
                 var fileContent = File.ReadAllText(path);

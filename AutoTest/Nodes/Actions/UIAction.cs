@@ -5,10 +5,11 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/UIAction")]
     public class UIAction : ActionGraphNode
     {
-        [Input] public string packageName, uiName, ctrlName;
-        [Output] public bool result;
+        public string packageName, uiName, ctrlName;
         public ActionType actionType = ActionType.ClickBtn;
+        public UIEventType eventType = UIEventType.TouchBegin;
         public enum ActionType { ClickBtn, OpenUI, CloseUI }
+        public enum UIEventType { TouchBegin, TouchEnd }
 
         // public override object GetValue(XNode.NodePort port)
         // {

@@ -1,6 +1,417 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7962872490116157301
+--- !u!114 &-7700706982674888530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1500, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -7700706982674888530}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 5831135662484936581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -7700706982674888530}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2852322107651300873}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: Login
+  ctrlName: Button_Login/Surface2
+  btnText: 
+  recordTick: 
+--- !u!114 &-7436153641147961491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 0, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -7436153641147961491}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -7436153641147961491}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 8421203485034472339}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 1
+  uid: 
+  uiName: Advice
+  ctrlName: Button_OK/animation
+  btnText: 
+  recordTick: 
+--- !u!114 &-7166512485877684847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2400, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -7166512485877684847}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -7166512485877684847}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: 
+  ctrlName: 
+  btnText: 
+  recordTick: 
+--- !u!114 &-3474777017297091411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 900, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -3474777017297091411}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 7775589002240884532}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -3474777017297091411}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 5831135662484936581}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: Login
+  ctrlName: Button_Login/Surface1
+  btnText: 
+  recordTick: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27c706d52578b94eba4eb2fd589398d, type: 3}
+  m_Name: New BehaviourTree Graph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -7436153641147961491}
+  - {fileID: 8421203485034472339}
+  - {fileID: 7775589002240884532}
+  - {fileID: -3474777017297091411}
+  - {fileID: 5831135662484936581}
+  - {fileID: -7700706982674888530}
+  - {fileID: 2852322107651300873}
+  - {fileID: 3210822551485596648}
+  - {fileID: -7166512485877684847}
+  root: {fileID: -7436153641147961491}
+--- !u!114 &2852322107651300873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1800, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 2852322107651300873}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -7700706982674888530}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 2852322107651300873}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 3210822551485596648}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: Login_SelectRole
+  ctrlName: Button_Login/n0
+  btnText: 
+  recordTick: 
+--- !u!114 &3210822551485596648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2100, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 3210822551485596648}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 2852322107651300873}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 3210822551485596648}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: Login_SelectRole
+  ctrlName: Button_Login/n0
+  btnText: 
+  recordTick: 
+--- !u!114 &5831135662484936581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1200, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 5831135662484936581}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -3474777017297091411}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 5831135662484936581}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -7700706982674888530}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: Login
+  ctrlName: Button_Login/Surface2
+  btnText: 
+  recordTick: 
+--- !u!114 &7775589002240884532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b62703ec9d8fc41a253aeef7a1029b, type: 3}
+  m_Name: Click Btn
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 600, y: 0}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 7775589002240884532}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 8421203485034472339}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 7775589002240884532}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -3474777017297091411}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  nodeName: 
+  isRoot: 0
+  uid: 
+  uiName: Advice
+  ctrlName: Button_OK/animation
+  btnText: 
+  recordTick: 
+--- !u!114 &8421203485034472339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16,156 +427,37 @@ MonoBehaviour:
   position: {x: 300, y: 0}
   ports:
     keys:
-    - parent
-    values:
-    - _fieldName: parent
-      _node: {fileID: -7962872490116157301}
-      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  isRoot: 0
-  uiName: Advice
-  ctrlName: Button_OK/animation
-  btnText: 
---- !u!114 &-3761474851562015107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf3760add70e5b4fa70d2c2e3a86000, type: 3}
-  m_Name: Root
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -200, y: -40}
-  ports:
-    keys:
     - input
     - output
-    - parent
     values:
     - _fieldName: input
-      _node: {fileID: -3761474851562015107}
-      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphNode, Assembly-CSharp,
+      _node: {fileID: 8421203485034472339}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: output
+        node: {fileID: -7436153641147961491}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: output
-      _node: {fileID: -3761474851562015107}
-      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphNode, Assembly-CSharp,
+      _node: {fileID: 8421203485034472339}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 7775589002240884532}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: parent
-      _node: {fileID: -3761474851562015107}
-      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  isRoot: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27c706d52578b94eba4eb2fd589398d, type: 3}
-  m_Name: New BehaviourTree Graph
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: -7962872490116157301}
-  - {fileID: 8510718907241408346}
-  - {fileID: -3761474851562015107}
-  root: {fileID: -3761474851562015107}
---- !u!114 &8510718907241408346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b8f36d635dc9f4d974803d79e17a13, type: 3}
-  m_Name: UI Action
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -232, y: 136}
-  ports:
-    keys:
-    - result
-    - ctrlName
-    - uiName
-    - packageName
-    - parent
-    values:
-    - _fieldName: result
-      _node: {fileID: 8510718907241408346}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: ctrlName
-      _node: {fileID: 8510718907241408346}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: uiName
-      _node: {fileID: 8510718907241408346}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: packageName
-      _node: {fileID: 8510718907241408346}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: parent
-      _node: {fileID: 8510718907241408346}
-      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
+  nodeName: 
   isRoot: 0
-  packageName: 
-  uiName: 
-  ctrlName: 
-  result: 0
-  actionType: 1
+  uid: 
+  uiName: Advice
+  ctrlName: Button_OK/animation
+  btnText: 
+  recordTick: 

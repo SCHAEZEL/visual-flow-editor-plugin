@@ -9,9 +9,15 @@ using XNode;
 
 namespace XNode.AutoTest
 {
+    [NodeTint("#685142")]
     public class Root : BehaviourTreeGraphNode
     {
-        [Input] BehaviourTreeGraphNode input;
-        [Output] BehaviourTreeGraphNode output;
+        public string treeName;
+        [SerializeField, Output] BehaviourTreeGraphConnection child;
+        [HideInInspector] string scope;
+        public BehaviourTreeGraphConnection root
+        {
+            get { return child; }
+        }
     }
 }

@@ -1,4 +1,4 @@
-public abstract class BehaviourTreeNode<T>
+public class BehaviourTreeNode<T>
 {
     #region Constructor
     public BehaviourTreeNode(int nodeIndex)

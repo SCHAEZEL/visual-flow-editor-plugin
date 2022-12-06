@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace XNode.AutoTest
 {
     [CreateNodeMenu("Decorators/CheckAttrib")]
     public class CheckAttrib : DecoratorGraphNode
     {
-        [SerializeField] public string desc = "检查角色属性";
+        [SerializeField] public override string description => "检查角色属性";
         public string attribName = "atk";
         public string op = ">";
         public int value = 0;
-        public override Dictionary<string, string> GetProperties()
+        public override Hashtable GetProperties()
         {
-            Dictionary<string, string> properties = new Dictionary<string, string>();
+            Hashtable properties = new Hashtable();
             properties.Add("attribName", attribName);
             properties.Add("op", op);
             properties.Add("value", value.ToString());

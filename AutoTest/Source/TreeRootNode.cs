@@ -11,83 +11,79 @@ using GenericMenu = XNodeEditor.AdvancedGenericMenu;
 
 namespace XNode.AutoTest
 {
-    [NodeTint("#685142")]
+    [NodeTint("#685142"), NodeWidth(250)]
     public class TreeRootNode : BehaviourTreeGraphNode
     {
-        const string WinformTitle = "AutoTest Editor";
-        static string VERSION = "1.0.0";
-        public string title = "A behavior tree";
-        public string description = "行为树demo";
-        protected string scope = "tree";
-        protected string nodeId = "Default_Tree_1";
+        public string title = "Behavior Demo";
+        public override string description => "随便一棵树";
+        public override string nodeName => "DefaultNode";
+        public override string scope => "tree";
+        public override string id => "default_tree_id";
+        static int treeCount = 0;
+        public string root
+        {
+            get
+            {
+                NodePort childPort = this.GetOutputPort("child");
+                BehaviourTreeGraphNode childNode = childPort.node as BehaviourTreeGraphNode;
+                return childNode.id;
+            }
+        }
         [SerializeField, Output] BehaviourTreeGraphConnection child;
 
-        /// <summary>
-        /// Get tree root data.
-        /// </summary>
-        /// <value></value>
-        public BehaviourTreeGraphConnection rootData
-        {
-            get { return child; }
-        }
-
-        public override string GetNodeScope()
-        {
-            return scope;
-        }
-
-        string GetRootId()
-        {
-            return "";
-        }
-
+        /// <summary> Return a Hashtable with all nodes' data insiede. </summary>
         Hashtable GetNodesList()
         {
-            Hashtable ht = new Hashtable();
-            return ht;
+            Hashtable allNodes = new Hashtable();
+            Queue queue = new Queue();
+            NodePort childPort = this.GetOutputPort("child");
+            queue.Enqueue(childPort.Connection.node);
+            while (queue.Count > 0)
+            {
+                BehaviourTreeGraphNode node = queue.Dequeue() as BehaviourTreeGraphNode;
+                if (node == null) continue;
+
+                /// Enqueue all child nodes.
+                if (node.Size == -1)
+                {
+                    EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle,
+                        string.Format("缺失子节点，错误内容:\n name:{0}, id:{1}", node.name, node.id), "确认");
+                    return allNodes;
+                }
+                for (var i = 0; i < node.Size; i++)
+                {
+                    BehaviourTreeGraphNode connectedNode;
+                    var potName = node.nodeType == NodeType.CompositeNode ? string.Format(AutoTestDefine.ChildrenPortNameFormat, i) : "child";
+                    var port = node.GetOutputPort(potName);
+                    if (port == null)
+                        continue;
+                    else
+                        connectedNode = port.Connection.node as BehaviourTreeGraphNode;
+                    queue.Enqueue(connectedNode);
+                }
+                allNodes.Add(node.id, node.ExportNode());
+            }
+            return allNodes;
         }
 
+        /// <summary>
+        /// Export behavior tree with JSON format.
+        /// </summary>
         [ContextMenu("Export Tree")]
         public void ExportTree()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, "bt_data", "json");
+            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, title, "json");
             if (path.Length != 0)
             {
-                Hashtable ht = new Hashtable();
-                ht.Add("version", VERSION);
-                ht.Add("scope", scope);
-                ht.Add("id", nodeId);
+                Hashtable ht = ExportNode();
                 ht.Add("title", title);
-                ht.Add("description", description);
-                ht.Add("root", GetRootId());
-                ht.Add("properties", "{}");
+                ht.Add("root", root);
                 ht.Add("nodes", GetNodesList());
-                ht.Add("display", GetNodeXYJson());
                 string jsonData = StringUtil.HashtableToJson(ht);
-                string result = SaveFile(path, jsonData) ? "行为树导出成功" : "行为树导出失败，路径有误请重试";
-                EditorUtility.DisplayDialog(WinformTitle, result, "确认");
+                File.WriteAllText(path, jsonData, Encoding.UTF8);
+                EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("行为树导出成功，路径：\n{0}", path), "确认");
             }
-        }
-
-        static bool SaveFile(string file, string path)
-        {
-            using (StreamWriter textWriter = new StreamWriter(file, false, Encoding.UTF8))
-            {
-                // textWriter.Write(file.ToString());
-                // textWriter.Write(sb.ToString());
-                // textWriter.Flush();
-                // textWriter.Close();
-
-                using (StreamWriter sw = new StreamWriter("CDriveDirs.txt"))
-                {
-                    // foreach (DirectoryInfo dir in cDirs)
-                    // {
-                    //     sw.WriteLine(dir.Name);
-                    // }
-                }
-            }
-            return true;
         }
     }
 }

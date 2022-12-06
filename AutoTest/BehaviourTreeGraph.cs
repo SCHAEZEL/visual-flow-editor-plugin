@@ -10,24 +10,12 @@ namespace XNode.AutoTest
 
     public class BehaviourTreeGraph : NodeGraph
     {
-        #region Public
-        //         public IAIBehaviour<T, BehaviourTreeState> Build<T>()
-        //         {
-        // #if UNITY_EDITOR
-        //             root.BuildingGraph = this;
-        // #endif
-        //             var startIndex = -1;
-        //             var rootNode = root.Build<T>(ref startIndex);
-
-        //             return new BehaviourTree<T>(rootNode, root.Size);
-        //         }
-
-        public void SetRoot(BehaviourTreeGraphNode node)
-        {
-            if (root) { root.IsRoot = false; }
-            root = node;
-            root.IsRoot = true;
-        }
+        // public void SetRoot(BehaviourTreeGraphNode node)
+        // {
+        //     if (root) { root.IsRoot = false; }
+        //     root = node;
+        //     root.IsRoot = true;
+        // }
 
         public override Node AddNode(Type type)
         {
@@ -38,16 +26,15 @@ namespace XNode.AutoTest
             }
             // Set first node as root by default
             var node = base.AddNode(type) as BehaviourTreeGraphNode;
-            if (root == null)
-            {
-                SetRoot(node);
-            }
+            // if (root == null)
+            // {
+            //     SetRoot(node);
+            // }
 
             return node;
         }
 
         public BehaviourTreeGraphNode Root => root;
-        #endregion
 
         #region Private
         [SerializeField] BehaviourTreeGraphNode root;

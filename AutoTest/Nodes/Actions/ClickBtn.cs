@@ -18,14 +18,14 @@ namespace XNode.AutoTest
         public string eventType;
         [HideInInspector] public string btnText;
 
-        public override Dictionary<string, string> GetProperties()
+        public override Hashtable GetProperties()
         {
-            Dictionary<string, string> properties = new Dictionary<string, string>();
+            Hashtable properties = new Hashtable();
             properties.Add("uiName", uiName);
-            properties.Add("ctrlName", uiName);
-            properties.Add("recordTick", uiName.ToString());
-            properties.Add("btnText", uiName);
-            properties.Add("btnText", eventType);
+            properties.Add("ctrlName", ctrlName);
+            properties.Add("recordTick", recordTick.ToString());
+            properties.Add("btnText", btnText);
+            properties.Add("eventType", eventType);
             return properties;
         }
     }

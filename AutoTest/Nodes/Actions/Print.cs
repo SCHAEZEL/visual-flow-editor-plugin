@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections;
 
 namespace XNode.AutoTest
 {
@@ -8,9 +7,9 @@ namespace XNode.AutoTest
     {
         public string text = "";
 
-        public override Dictionary<string, string> GetProperties()
+        public override Hashtable GetProperties()
         {
-            Dictionary<string, string> properties = new Dictionary<string, string>();
+            Hashtable properties = new Hashtable();
             properties.Add("text", text);
             return properties;
         }

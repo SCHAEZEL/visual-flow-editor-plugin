@@ -31,8 +31,9 @@ namespace XNode.AutoTest
         {
             base.AddContextMenuItems(menu, compatibleType, direction);
             menu.AddItem(new GUIContent("Import UI Record File"), false, ImportUIRecordFile, this);
-            menu.AddItem(new GUIContent("Export Behavior Tree File"), false, ExportBehaviorTreeFile, this);
+            menu.AddItem(new GUIContent("Clear All Nodes"), false, ClearAllNodes, this);
         }
+
         /// <summary>
         /// Import UI record file by UIRecordMgr over JSON format.
         /// </summary>
@@ -63,8 +64,8 @@ namespace XNode.AutoTest
 
                     if (lastNode != null)
                     {
-                        NodePort outputPort = lastNode.GetOutputPort("output");
-                        NodePort inputPort = node.GetInputPort("input");
+                        NodePort outputPort = lastNode.GetOutputPort("child");
+                        NodePort inputPort = node.GetInputPort("parent");
                         outputPort.Connect(inputPort);
                     }
                     lastNode = node;
@@ -73,42 +74,15 @@ namespace XNode.AutoTest
             }
         }
 
+
         /// <summary>
-        /// Export behavior tree with JSON format.
+        /// Clean all node on the AutoTest Graph and reset all class' static data.
         /// </summary>
         /// <param name="userData"></param>
-        static void ExportBehaviorTreeFile(object userData)
+        static void ClearAllNodes(object userData)
         {
-            NodeGraphEditor editor = userData as NodeGraphEditor;
-            string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.OpenFilePanel("Export Behavior Tree File", dir, "json");
-            if (path.Length != 0)
-            {
-                var fileContent = File.ReadAllText(path);
-                var data = (Hashtable)XUPorterJSON.MiniJSON.jsonDecode(fileContent);
-                var i = 0;
-                var perNumInLine = 15;
-                var nodeSize = 300;
-                Node lastNode = null;
-                foreach (Hashtable m in data["opers"] as ArrayList)
-                {
-                    var pos = new Vector2((i % perNumInLine) * nodeSize, (i / perNumInLine) * nodeSize);
-                    i++;
 
-                    var node = editor.CreateNode(typeof(ClickBtn), pos) as ClickBtn;
-                    node.uiName = m["uiName"] as string;
-                    node.ctrlName = m["ctrlName"] as string;
 
-                    if (lastNode != null)
-                    {
-                        NodePort outputPort = lastNode.GetOutputPort("output");
-                        NodePort inputPort = node.GetInputPort("input");
-                        outputPort.Connect(inputPort);
-                    }
-                    lastNode = node;
-                    Debug.LogWarning(m.ToString());
-                }
-            }
         }
     }
 }

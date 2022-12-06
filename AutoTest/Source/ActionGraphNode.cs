@@ -6,44 +6,21 @@ namespace XNode.AutoTest
     [NodeTint("#2e4e6b")]
     public abstract class ActionGraphNode : BehaviourTreeGraphNode
     {
-        [SerializeField, Input] public BehaviourTreeGraphConnection input;
-        [SerializeField, Output] public BehaviourTreeGraphConnection output;
-        [SerializeField] public string nodeId;
-        protected string scope = "node";
+        [SerializeField, Input] public BehaviourTreeGraphConnection parent;
+        [SerializeField, Output] public BehaviourTreeGraphConnection child;
+        int nodeIndex;
+        public string description = "行为节点";
         const string ChildrenPortNameFormat = "children {0}";
-        const string UidFormat = "ActionNode_{0}";
-
-        /// <summary> 总Action节点个数 </summary>
-        static int nodeCount = 0;
+        public override string scope => "node";
+        const string IdFormat = "ActionNode_{0}";
+        public override string id => string.Format(IdFormat, nodeIndex);
+        static int actionNodeCount = 0;
         int childrenCount;
-
-        public override int Size
-        {
-            get
-            {
-                var size = 0;
-                for (var i = 0; i < childrenCount; i++)
-                {
-                    var port = GetOutputPort(string.Format(ChildrenPortNameFormat, i));
-                    var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
-                    if (connectedNode == null) continue;
-                    size += connectedNode.Size;
-                }
-                return size + 1;
-            }
-        }
-
-        public override string GetNodeScope()
-        {
-            return scope;
-        }
+        public override NodeType nodeType => NodeType.ActionNode;
 
         protected override void Init()
         {
             base.Init();
-            // Calculate children count.
-            // note: it appears that xNode doesn't populate the children list on init.
-            // Which results in children.Count being 0.
             childrenCount = 0;
             while (true)
             {
@@ -52,8 +29,8 @@ namespace XNode.AutoTest
                 childrenCount++;
             }
 
-            nodeCount++;
-            nodeId = string.Format(UidFormat, nodeCount);
+            actionNodeCount++;
+            nodeIndex = actionNodeCount;
         }
     }
 }

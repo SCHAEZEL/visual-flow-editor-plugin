@@ -1,28 +1,12 @@
 namespace XNode.AutoTest
 {
-    // public static class AutoTestDefine
-    // {
-    //     static string version = "1.0.0";
-    //     static 
-
-    //     [SerializeField] public new string nodeName = "Tree Head";
-    //     [HideInInspector] public string scope = "tree";
-    //     [SerializeField, Output] BehaviourTreeGraphConnection child;
-
-    //     /// <summary>
-    //     /// Get tree root data.
-    //     /// </summary>
-    //     /// <value></value>
-    //     public BehaviourTreeGraphConnection rootData
-    //     {
-    //         get { return child; }
-    //     }
-
-    //     public override string GetNodeScope()
-    //     {
-    //         return scope;
-    //     }
-    // }
+    public static class AutoTestDefine
+    {
+        public const string WinformTitle = "AutoTestGraph Editor";
+        public const string version = "1.0.0";
+        public const string ChildPortNameFormat = "child";
+        public const string ChildrenPortNameFormat = "children {0}";
+    }
     public enum MathType { Add, Subtract, Multiply, Divide }
-
+    public enum NodeType { CompositeNode, ActionNode, DecoratorNode }
 }

@@ -1,13 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 
 namespace XNode.AutoTest
 {
     [CreateNodeMenu("Decorators/CheckLevel")]
     public class CheckLevel : DecoratorGraphNode
     {
-        // protected override BehaviourTreeNode<T> BuildNode<T>(BehaviourTreeNode<T> child, int nodeIndex)
-        // {
-        //     return new CheckLevel() as BehaviourTreeNode<T>;
-        // }
+        public override string description => "检查角色等级";
+        public string op = ">";
+        public int value = 0;
+        public override Hashtable GetProperties()
+        {
+            Hashtable properties = new Hashtable();
+            properties.Add("op", op);
+            properties.Add("value", value);
+            return properties;
+        }
     }
 }

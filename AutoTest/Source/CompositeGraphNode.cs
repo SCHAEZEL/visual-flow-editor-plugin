@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace XNode.AutoTest
@@ -10,18 +8,18 @@ namespace XNode.AutoTest
 
     public abstract class CompositeGraphNode : BehaviourTreeGraphNode
     {
-        [SerializeField, Input] public BehaviourTreeGraphConnection input;
-        [SerializeField] public string nodeId;
-        [SerializeField, Output(dynamicPortList = true)] List<BehaviourTreeGraphConnection> children;
-        // [SerializeField, Output] public BehaviourTreeGraphConnection output;
-
-        protected string scope = "node";
+        [SerializeField, Input] public BehaviourTreeGraphConnection parent;
+        int nodeIndex;
+        public string description = "复合节点";
+        public override string nodeName => "DefaultNode";
+        public override string scope => "node";
+        const string IdFormat = "CompositeNode_{0}";
+        public override string id => string.Format(IdFormat, nodeIndex);
         const string ChildrenPortNameFormat = "children {0}";
-        const string UidFormat = "CompositeNode_{0}";
-
-        /// <summary> 总Action节点个数 </summary>
-        static int nodeCount = 0;
+        static int compositeNodeCount = 0;
+        [SerializeField, Output(dynamicPortList = true)] List<BehaviourTreeGraphConnection> children;
         int childrenCount;
+        public override NodeType nodeType => NodeType.CompositeNode;
 
         public override int Size
         {
@@ -40,11 +38,6 @@ namespace XNode.AutoTest
             }
         }
 
-        public override string GetNodeScope()
-        {
-            return scope;
-        }
-
         protected override void Init()
         {
             base.Init();
@@ -58,8 +51,8 @@ namespace XNode.AutoTest
                 if (port == null) break;
                 childrenCount++;
             }
-            nodeCount++;
-            nodeId = string.Format(UidFormat, nodeCount);
+            compositeNodeCount++;
+            nodeIndex = compositeNodeCount;
         }
     }
 }

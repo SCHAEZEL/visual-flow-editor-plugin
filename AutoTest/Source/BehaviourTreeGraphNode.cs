@@ -5,73 +5,69 @@ using UnityEngine;
 
 namespace XNode.AutoTest
 {
-    public abstract class BehaviourTreeGraphNode : Node
+    public class BehaviourTreeGraphNode : Node
     {
-        [SerializeField, HideInInspector] bool isRoot;
-        [SerializeField] static int numChildren = 0;
+        static int numChildren = 0;
+        int globalIndex;
+        public string version => AutoTestDefine.version;
+        public virtual string description => "通用描述";
+        public virtual string scope => "node";
+        public virtual string id => string.Format("default_node_id_{0}", globalIndex);
         public virtual string nodeName => "DefaultNode";
-        public virtual int Size => 1;
+        public virtual NodeType nodeType => NodeType.ActionNode;
 
-        public bool IsRoot
+        /// <summary> Count of children nodes. </summary>
+        public virtual int Size
         {
-            get => isRoot;
-            set => isRoot = value;
+            get
+            {
+                var port = GetOutputPort(AutoTestDefine.ChildPortNameFormat);
+                var connectedPort = port.Connection as NodePort;
+                return connectedPort == null ? 0 : 1;
+            }
         }
 
-        public virtual Dictionary<string, string> GetProperties()
+        protected override void Init()
         {
-            return new Dictionary<string, string>();
+            numChildren++;
+            globalIndex = numChildren;
         }
 
-        // [ContextMenu("Set as root")]
-        // public void SetAsRoot()
-        // {
-        //     BehaviourTreeGraph btGraph = graph as BehaviourTreeGraph;
-        //     btGraph.SetRoot(this);
+        public virtual Hashtable properties => GetProperties();
 
-        //     NodePort port = GetInputPort("parent");
-        //     port.Disconnect(port.Connection);
-        // }
+        public virtual Hashtable GetProperties()
+        {
+            return new Hashtable();
+        }
 
-        /// <summary>
-        /// 导出节点位置的JSON
-        /// </summary>
-        /// <returns></returns>
-        public string GetNodeXYJson()
+        public virtual Hashtable GetNodePos()
         {
             Hashtable pos = new Hashtable();
             pos.Add("x", this.position.x);
             pos.Add("y", this.position.y);
-            return StringUtil.HashtableToJson(pos);
+            return pos;
         }
-
         public override object GetValue(NodePort port)
         {
             return null;
         }
 
-        public abstract string GetNodeScope();
+        public virtual Hashtable ExportNodeBase()
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add("version", version);
+            ht.Add("scope", scope);
+            ht.Add("id", id);
+            ht.Add("properties", GetProperties());
+            ht.Add("display", GetNodePos());
+            ht.Add("description", description);
+            ht.Add("name", name.Replace(" ", "")); // Names from Node contains spaces between words.
+            return ht;
+        }
 
-        // protected override void Init()
-        // {
-        // numChildren += 1;
-        // index = numChildren;
-        // }
-
-
-#if UNITY_EDITOR
-        // public BehaviourTreeGraph BuildingGraph { get; set; }
-
-        // void SetNodeIndexInBuildingGraph(int index)
-        // {
-        //     if (IsRoot == false)
-        //     {
-        //         var parentNode = GetInputPort("parent").Connection.node as BehaviourTreeGraphNode;
-        //         BuildingGraph = parentNode.BuildingGraph;
-        //     }
-
-        //     BuildingGraph.SetNodeIndex(GetInstanceID(), index);
-        // }
-#endif
+        public virtual Hashtable ExportNode()
+        {
+            return ExportNodeBase();
+        }
     }
 }

@@ -81,8 +81,7 @@ namespace XNode.AutoTest
         /// <param name="userData"></param>
         static void ClearAllNodes(object userData)
         {
-
-
+            // BODY:TODO
         }
     }
 }

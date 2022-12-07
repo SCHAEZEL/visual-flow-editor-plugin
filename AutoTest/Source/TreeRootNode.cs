@@ -15,10 +15,13 @@ namespace XNode.AutoTest
     public class TreeRootNode : BehaviourTreeGraphNode
     {
         public string title = "Behavior Demo";
-        public override string description => "随便一棵树";
+
+        /// <summary> 用于导出后查看节点备注 </summary>
+        public override string description => "树头节点";
         public override string nodeName => "default_node";
         public override string scope => "tree";
         public override string id => string.Format(AutoTestDefine.DefaultTreeIdFormat, treeIndex);
+        [SerializeField, Output] BehaviourTreeGraphConnection child;
         static int treeCount = 0;
         int treeIndex;
         protected override void Init()
@@ -36,7 +39,6 @@ namespace XNode.AutoTest
                 return childNode.id;
             }
         }
-        [SerializeField, Output] BehaviourTreeGraphConnection child;
 
         /// <summary> Return a Hashtable with all nodes' data insiede. </summary>
         Hashtable GetNodesList()
@@ -76,21 +78,44 @@ namespace XNode.AutoTest
         /// <summary>
         /// Export behavior tree with JSON format.
         /// </summary>
-        [ContextMenu("Export Tree")]
-        public void ExportTree()
+        [ContextMenu("Export Tree in JSON")]
+        public void ExportTreeInJson()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
             string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, id, "json");
             if (path.Length != 0)
             {
-                Hashtable ht = ExportNode();
-                ht.Add("title", title);
-                ht.Add("root", root);
-                ht.Add("nodes", GetNodesList());
-                string jsonData = StringUtil.HashtableToJson(ht);
+                string jsonData = GetJsonData();
                 File.WriteAllText(path, jsonData, Encoding.UTF8);
-                EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("行为树导出成功，路径：\n{0}", path), "确认");
+                EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("该行为树已导出LUA格式文件\n路径：{0}", path), "确认");
             }
+        }
+
+        /// <summary>
+        /// Export behavior tree with LUA wrap.
+        /// </summary>
+        [ContextMenu("Export Tree in LUA")]
+        public void ExportTreeInLua()
+        {
+            string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
+            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, id, "lua");
+            if (path.Length != 0)
+            {
+                StringBuilder luaData = new StringBuilder("return [[");
+                luaData.Append(GetJsonData());
+                luaData.Append("]]");
+                File.WriteAllText(path, luaData.ToString(), Encoding.UTF8);
+                EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("该行为树已导出LUA格式文件\n路径：{0}", path), "确认");
+            }
+        }
+
+        string GetJsonData()
+        {
+            Hashtable ht = ExportNode();
+            ht.Add("title", title);
+            ht.Add("root", root);
+            ht.Add("nodes", GetNodesList());
+            return StringUtil.HashtableToJson(ht);
         }
     }
 }

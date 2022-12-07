@@ -9,6 +9,9 @@ namespace XNode.AutoTest
         [SerializeField, Input] public BehaviourTreeGraphConnection parent;
         [SerializeField, Output] public BehaviourTreeGraphConnection child;
         int nodeIndex;
+        public string title;
+
+        /// <summary> 用于导出后查看节点备注 </summary>
         public override string description => "装饰器节点";
         public override string nodeName => "DefaultDecoratorNode";
         public override string scope => "node";
@@ -31,6 +34,7 @@ namespace XNode.AutoTest
                 if (port == null) break;
                 childrenCount++;
             }
+            title = description;
             decoratorNodeCount++;
             nodeIndex = decoratorNodeCount;
         }

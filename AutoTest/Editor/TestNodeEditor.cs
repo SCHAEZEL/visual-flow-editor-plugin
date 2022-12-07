@@ -10,7 +10,7 @@ using GenericMenu = XNodeEditor.AdvancedGenericMenu;
 
 namespace XNode.AutoTest
 {
-    [CustomNodeGraphEditor(typeof(BehaviourTreeGraph))]
+    // [CustomNodeGraphEditor(typeof(BehaviourTreeGraph))]
     public class TestNodeEditor : NodeGraphEditor
     {
 

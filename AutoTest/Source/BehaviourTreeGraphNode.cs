@@ -12,9 +12,10 @@ namespace XNode.AutoTest
         public string version => AutoTestDefine.version;
         public virtual string description => "通用描述";
         public virtual string scope => "node";
-        public virtual string id => string.Format("default_node_id_{0}", globalIndex);
+        public virtual string id => string.Format(AutoTestDefine.DefaultNodeIdFormat, globalIndex);
         public virtual string nodeName => "DefaultNode";
         public virtual NodeType nodeType => NodeType.ActionNode;
+        public virtual Hashtable properties => GetProperties();
 
         /// <summary> Count of children nodes. </summary>
         public virtual int Size
@@ -32,8 +33,6 @@ namespace XNode.AutoTest
             numChildren++;
             globalIndex = numChildren;
         }
-
-        public virtual Hashtable properties => GetProperties();
 
         public virtual Hashtable GetProperties()
         {

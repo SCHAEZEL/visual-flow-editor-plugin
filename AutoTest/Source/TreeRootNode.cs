@@ -16,15 +16,22 @@ namespace XNode.AutoTest
     {
         public string title = "Behavior Demo";
         public override string description => "随便一棵树";
-        public override string nodeName => "DefaultNode";
+        public override string nodeName => "default_node";
         public override string scope => "tree";
-        public override string id => "default_tree_id";
+        public override string id => string.Format(AutoTestDefine.DefaultTreeIdFormat, treeIndex);
         static int treeCount = 0;
+        int treeIndex;
+        protected override void Init()
+        {
+            treeCount++;
+            treeIndex = treeCount;
+        }
+
         public string root
         {
             get
             {
-                NodePort childPort = this.GetOutputPort("child");
+                NodePort childPort = this.GetOutputPort(AutoTestDefine.ChildPortNameFormat);
                 BehaviourTreeGraphNode childNode = childPort.node as BehaviourTreeGraphNode;
                 return childNode.id;
             }
@@ -36,14 +43,14 @@ namespace XNode.AutoTest
         {
             Hashtable allNodes = new Hashtable();
             Queue queue = new Queue();
-            NodePort childPort = this.GetOutputPort("child");
+            NodePort childPort = this.GetOutputPort(AutoTestDefine.ChildPortNameFormat);
             queue.Enqueue(childPort.Connection.node);
             while (queue.Count > 0)
             {
                 BehaviourTreeGraphNode node = queue.Dequeue() as BehaviourTreeGraphNode;
                 if (node == null) continue;
 
-                /// Enqueue all child nodes.
+                /// Enqueue all children nodes.
                 if (node.Size == -1)
                 {
                     EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle,
@@ -53,7 +60,7 @@ namespace XNode.AutoTest
                 for (var i = 0; i < node.Size; i++)
                 {
                     BehaviourTreeGraphNode connectedNode;
-                    var potName = node.nodeType == NodeType.CompositeNode ? string.Format(AutoTestDefine.ChildrenPortNameFormat, i) : "child";
+                    var potName = node.nodeType == NodeType.CompositeNode ? string.Format(AutoTestDefine.ChildrenPortNameFormat, i) : AutoTestDefine.ChildPortNameFormat;
                     var port = node.GetOutputPort(potName);
                     if (port == null)
                         continue;
@@ -73,7 +80,7 @@ namespace XNode.AutoTest
         public void ExportTree()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, title, "json");
+            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, id, "json");
             if (path.Length != 0)
             {
                 Hashtable ht = ExportNode();

@@ -9,6 +9,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Composites/Selector")]
     public class Selector : CompositeGraphNode
     {
+        public override string description => "";
     }
 
     /// <summary>
@@ -17,6 +18,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Composites/Sequence")]
     public class Sequence : CompositeGraphNode
     {
+        public override string description => "";
     }
 
     /// <summary>
@@ -25,6 +27,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Composites/MemPriority")]
     public class MemPriority : CompositeGraphNode
     {
+        public override string description => "";
     }
 
     /// <summary>
@@ -33,6 +36,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Composites/MemSequence")]
     public class MemSequence : CompositeGraphNode
     {
+        public override string description => "";
     }
 
     /// <summary>
@@ -41,5 +45,6 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Composites/Priority")]
     public class Priority : CompositeGraphNode
     {
+        public override string description => "";
     }
 }

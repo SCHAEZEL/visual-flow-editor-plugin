@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 300, y: 0}
+  position: {x: 792, y: 232}
   ports:
     keys:
     - parent
@@ -43,7 +43,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Advice
   uiName: Advice
   ctrlName: Button_OK/animation
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 2400, y: 0}
+  position: {x: 2904, y: 232}
   ports:
     keys:
     - parent
@@ -90,7 +90,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Login
   uiName: Login_SelectRole
   ctrlName: Button_Login/n0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: Tree Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1176, y: -392}
+  position: {x: -1176, y: -440}
   ports:
     keys:
     - child
@@ -119,7 +119,10 @@ MonoBehaviour:
       _node: {fileID: -4435648649801302254}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: parent
+        node: {fileID: 3015174438401245282}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -138,7 +141,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 1800, y: 0}
+  position: {x: 2296, y: 232}
   ports:
     keys:
     - parent
@@ -168,7 +171,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Login
   uiName: Login_SelectRole
   ctrlName: Button_Login/n0
@@ -188,7 +191,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 2100, y: 0}
+  position: {x: 2600, y: 232}
   ports:
     keys:
     - parent
@@ -218,7 +221,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Login
   uiName: Login_SelectRole
   ctrlName: Button_Login/n0
@@ -238,7 +241,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 1200, y: 0}
+  position: {x: 1688, y: 232}
   ports:
     keys:
     - parent
@@ -268,7 +271,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Login
   uiName: Login
   ctrlName: Button_Login/Surface2
@@ -288,7 +291,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 600, y: 0}
+  position: {x: 1096, y: 232}
   ports:
     keys:
     - parent
@@ -318,13 +321,100 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Advice
   uiName: Advice
   ctrlName: Button_OK/animation
   recordTick: 1157
   eventType: Click
   btnText: 
+--- !u!114 &-1395832030272464919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Kill Monster
+  m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:KillMonster
+  graph: {fileID: 11400000}
+  position: {x: -376, y: -376}
+  ports:
+    keys:
+    - parent
+    - child
+    values:
+    - _fieldName: parent
+      _node: {fileID: -1395832030272464919}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: children 1
+        node: {fileID: 3015174438401245282}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: -1395832030272464919}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  title: "\u968F\u673A\u51FB\u6740\u602A\u7269"
+  number: 1
+--- !u!114 &-304360495078627063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Execute GM Code
+  m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ExecuteGMCode
+  graph: {fileID: 11400000}
+  position: {x: -376, y: -632}
+  ports:
+    keys:
+    - parent
+    - child
+    values:
+    - _fieldName: parent
+      _node: {fileID: -304360495078627063}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: children 0
+        node: {fileID: 3015174438401245282}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: -304360495078627063}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: parent
+        node: {fileID: 5989083554713077719}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  title: "\u6267\u884CGM\u547D\u4EE4"
+  gmCode: '@'
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +424,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27c706d52578b94eba4eb2fd589398d, type: 3}
+  m_Script: {fileID: 11500000, guid: ac56e2a25613a30419c163d1585273df, type: 3}
   m_Name: New BehaviourTree Graph
   m_EditorClassIdentifier: 
   nodes:
@@ -350,7 +440,9 @@ MonoBehaviour:
   - {fileID: 2961848027318845794}
   - {fileID: -4435648649801302254}
   - {fileID: 3015174438401245282}
-  root: {fileID: 0}
+  - {fileID: -304360495078627063}
+  - {fileID: 5989083554713077719}
+  - {fileID: -1395832030272464919}
 --- !u!114 &1328636779338486736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +456,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 900, y: 0}
+  position: {x: 1400, y: 232}
   ports:
     keys:
     - parent
@@ -394,7 +486,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Login
   uiName: Login
   ctrlName: Button_Login/Surface1
@@ -414,7 +506,7 @@ MonoBehaviour:
   m_Name: Play UI Record
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:PlayUIRecord
   graph: {fileID: 11400000}
-  position: {x: -440, y: -152}
+  position: {x: 88, y: 40}
   ports:
     keys:
     - startNode
@@ -438,7 +530,7 @@ MonoBehaviour:
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: children 1
+      - fieldName: children 2
         node: {fileID: 3015174438401245282}
         reroutePoints: []
       _direction: 0
@@ -477,12 +569,16 @@ MonoBehaviour:
     - children
     - children 0
     - children 1
+    - children 2
     values:
     - _fieldName: parent
       _node: {fileID: 3015174438401245282}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: child
+        node: {fileID: -4435648649801302254}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -502,12 +598,28 @@ MonoBehaviour:
       _typeQualifiedName: System.Collections.Generic.List`1[[XNode.AutoTest.BehaviourTreeGraphConnection,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: parent
+        node: {fileID: -304360495078627063}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
     - _fieldName: children 1
+      _node: {fileID: 3015174438401245282}
+      _typeQualifiedName: System.Collections.Generic.List`1[[XNode.AutoTest.BehaviourTreeGraphConnection,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: parent
+        node: {fileID: -1395832030272464919}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: children 2
       _node: {fileID: 3015174438401245282}
       _typeQualifiedName: System.Collections.Generic.List`1[[XNode.AutoTest.BehaviourTreeGraphConnection,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
@@ -535,7 +647,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 1500, y: 0}
+  position: {x: 1992, y: 232}
   ports:
     keys:
     - parent
@@ -565,13 +677,55 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Login
   uiName: Login
   ctrlName: Button_Login/Surface2
   recordTick: 2492
   eventType: Click
   btnText: 
+--- !u!114 &5989083554713077719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Print
+  m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:Print
+  graph: {fileID: 11400000}
+  position: {x: 72, y: -648}
+  ports:
+    keys:
+    - parent
+    - child
+    values:
+    - _fieldName: parent
+      _node: {fileID: 5989083554713077719}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -304360495078627063}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: 5989083554713077719}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  title: "\u884C\u4E3A\u8282\u70B9"
+  text: 
 --- !u!114 &6933588815831252339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +739,7 @@ MonoBehaviour:
   m_Name: Click Btn
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:ClickBtn
   graph: {fileID: 11400000}
-  position: {x: 0, y: 0}
+  position: {x: 504, y: 232}
   ports:
     keys:
     - parent
@@ -615,7 +769,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: "\u70B9\u51FBUI\u63A7\u4EF6"
+  title: "\u70B9\u51FB\u6309\u94AE"
   packageName: Advice
   uiName: Advice
   ctrlName: Button_OK/animation

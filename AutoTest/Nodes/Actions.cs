@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEditor;
@@ -10,10 +11,10 @@ namespace XNode.AutoTest
     /// <summary>
     /// 点击按钮
     /// </summary>
-    [CreateNodeMenu("Action/ClickBtn")]
+    [CreateNodeMenu("Action/点击按钮")]
     public class ClickBtn : ActionGraphNode
     {
-        public override string description => "点击UI控件";
+        public override string description => "点击按钮";
         public string packageName;
         public string uiName;
         public string ctrlName;
@@ -31,7 +32,31 @@ namespace XNode.AutoTest
             properties.Add("eventType", eventType);
             properties.Add("packageName", packageName);
             return properties;
+        }
+    }
 
+
+    [CreateNodeMenu("Action/控件填入内容")]
+    public class InputContent : ActionGraphNode
+    {
+        public override string description => "控件填入内容";
+        public string packageName;
+        public string uiName;
+        public string ctrlName;
+        public int recordTick;
+        public string eventType;
+        [HideInInspector] public string btnText;
+
+        public override Hashtable GetProperties()
+        {
+            Hashtable properties = new Hashtable();
+            properties.Add("uiName", uiName);
+            properties.Add("ctrlName", ctrlName);
+            properties.Add("recordTick", recordTick.ToString());
+            properties.Add("btnText", btnText);
+            properties.Add("eventType", eventType);
+            properties.Add("packageName", packageName);
+            return properties;
         }
     }
 
@@ -40,11 +65,11 @@ namespace XNode.AutoTest
     ///  播放UI录像
     /// </summary>
     [NodeWidth(300)]
-    [CreateNodeMenu("Action/PlayUIRecord")]
+    [CreateNodeMenu("Action/播放UI录像")]
     public class PlayUIRecord : ActionGraphNode
     {
-        public string recordFileName = "";
         public override string description => "播放UI录像";
+        public string recordFileName = "";
         public string fileSuffix = "json";
         [SerializeField, Output] BehaviourTreeGraphConnection startNode;
 
@@ -79,7 +104,7 @@ namespace XNode.AutoTest
             }
             jsonData.Add("recordTick", Time.time); // TODO
             jsonData.Add("fileName", path);
-            jsonData.Add("opers", operArray); // TODO 需支持Object导出json
+            jsonData.Add("opers", operArray);
             string jsonContent = AutoTestUtils.HashtableToJson(jsonData);
             if (string.IsNullOrEmpty(jsonContent))
             {
@@ -92,14 +117,42 @@ namespace XNode.AutoTest
     }
 
 
+    [CreateNodeMenu("Action/GM命令"), NodeWidth(300)]
+    public class ExecuteGMCode : ActionGraphNode
+    {
+        public override string description => "执行GM命令";
+        public string gmCode = "";
+        public override Hashtable GetProperties()
+        {
+            Hashtable properties = new Hashtable();
+            properties.Add("gmCode", gmCode);
+            return properties;
+        }
+    }
+
+
+    [CreateNodeMenu("Action/执行Lua代码"), NodeWidth(300)]
+    public class ExecuteLuaCode : ActionGraphNode
+    {
+        public override string description => "执行Lua代码";
+        public string luaCode = "";
+        public override Hashtable GetProperties()
+        {
+            Hashtable properties = new Hashtable();
+            properties.Add("luaCode", luaCode);
+            return properties;
+        }
+    }
+
+
     /// <summary>
     /// 打印字符串
     /// </summary>
-    [CreateNodeMenu("Action/Print")]
+    [CreateNodeMenu("Action/打印")]
     public class Print : ActionGraphNode
     {
+        public override string description => "执行Lua代码";
         public string text = "";
-
         public override Hashtable GetProperties()
         {
             Hashtable properties = new Hashtable();
@@ -112,9 +165,29 @@ namespace XNode.AutoTest
     /// <summary>
     /// Behavior3内置Action
     /// </summary>
+    [CreateNodeMenu("Action/随机击杀怪物")]
+    public class KillMonster : ActionGraphNode
+    {
+        public override string description => "随机击杀怪物";
+
+        /// <summary> 击杀数量 </summary>
+        public int number = 1; ///
+        public override Hashtable GetProperties()
+        {
+            Hashtable properties = new Hashtable();
+            properties.Add("number", number);
+            return properties;
+        }
+    }
+
+
+    /// <summary>
+    /// Behavior3内置Action
+    /// </summary>
     [CreateNodeMenu("Action/Error")]
     public class Error : ActionGraphNode
     {
+        public override string description => "";
     }
 
 
@@ -124,6 +197,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/Failer")]
     public class Failer : ActionGraphNode
     {
+        public override string description => "";
     }
 
 
@@ -133,6 +207,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/Runner")]
     public class Runner : ActionGraphNode
     {
+        public override string description => "";
     }
 
 
@@ -142,6 +217,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/Succeeder")]
     public class Succeeder : ActionGraphNode
     {
+        public override string description => "";
     }
 
 
@@ -151,5 +227,6 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/Wait")]
     public class Wait : ActionGraphNode
     {
+        public override string description => "";
     }
 }

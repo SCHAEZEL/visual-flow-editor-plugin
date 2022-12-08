@@ -4,7 +4,7 @@ using UnityEngine;
 namespace XNode.AutoTest
 {
 
-    [CreateNodeMenu("Decorators/CheckLevel")]
+    [CreateNodeMenu("Decorators/检查角色等级")]
     public class CheckLevel : DecoratorGraphNode
     {
         public override string description => "检查角色等级";
@@ -19,7 +19,7 @@ namespace XNode.AutoTest
         }
     }
 
-    [CreateNodeMenu("Decorators/CheckAttrib")]
+    [CreateNodeMenu("Decorators/检查角色属性")]
     public class CheckAttrib : DecoratorGraphNode
     {
         [SerializeField] public override string description => "检查角色属性";
@@ -39,6 +39,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Decorators/Inverter")]
     public class Inverter : DecoratorGraphNode
     {
+        public override string description => "";
     }
 
     [CreateNodeMenu("Decorators/Limiter")]
@@ -49,20 +50,24 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Decorators/MaxTime")]
     public class MaxTime : DecoratorGraphNode
     {
+        public override string description => "";
     }
 
     [CreateNodeMenu("Decorators/Repeater")]
     public class Repeater : DecoratorGraphNode
     {
+        public override string description => "";
     }
 
     [CreateNodeMenu("Decorators/RepeatUntilFailure")]
     public class RepeatUntilFailure : DecoratorGraphNode
     {
+        public override string description => "";
     }
 
     [CreateNodeMenu("Decorators/RepeatUntilSuccess")]
     public class RepeatUntilSuccess : DecoratorGraphNode
     {
+        public override string description => "";
     }
 }

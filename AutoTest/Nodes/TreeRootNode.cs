@@ -34,15 +34,15 @@ namespace XNode.AutoTest
         /// 根节点
         /// </summary>
         /// <value></value>
-        public string root
-        {
-            get
-            {
-                NodePort childPort = this.GetOutputPort(AutoTestDefine.ChildPortNameFormat);
-                BehaviourTreeGraphNode childNode = childPort.node as BehaviourTreeGraphNode;
-                return childNode.id;
-            }
-        }
+        public string root => GetChild().id;
+        // {
+        //     get
+        //     {
+        //         NodePort childPort = this.GetOutputPort(AutoTestDefine.ChildPortNameFormat);
+        // BehaviourTreeGraphNode childNode = childPort.node as BehaviourTreeGraphNode;
+        //         return childNode.id;
+        //     }
+        // }
 
         /// <summary> Return a Hashtable with all nodes' data insiede. </summary>
         Hashtable GetNodesList()
@@ -86,7 +86,7 @@ namespace XNode.AutoTest
         public void ExportTreeInJson()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, id, "json");
+            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, title, "json");
             if (path.Length != 0)
             {
                 string jsonData = GetJsonData();
@@ -104,7 +104,7 @@ namespace XNode.AutoTest
         public void ExportTreeInLua()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, id, "lua");
+            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, title, "lua");
             if (path.Length != 0)
             {
                 StringBuilder luaData = new StringBuilder("return [[");

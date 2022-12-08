@@ -97,6 +97,34 @@ MonoBehaviour:
   recordTick: 3894
   eventType: Click
   btnText: 
+--- !u!114 &-4435648649801302254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d371ba439c26845a623bfc13aa0184, type: 3}
+  m_Name: Tree Root
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -1176, y: -392}
+  ports:
+    keys:
+    - child
+    values:
+    - _fieldName: child
+      _node: {fileID: -4435648649801302254}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  title: Behavior Demo
 --- !u!114 &-3045331307489381733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,16 +338,18 @@ MonoBehaviour:
   m_Name: New BehaviourTree Graph
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 6933588815831252339}
-  - {fileID: -7382912795936883386}
-  - {fileID: -1831604216533963325}
-  - {fileID: 1328636779338486736}
-  - {fileID: -2677090193699837260}
-  - {fileID: 5428777461145485076}
-  - {fileID: -3045331307489381733}
-  - {fileID: -2875234935345041499}
   - {fileID: -7375969101489891721}
+  - {fileID: -2875234935345041499}
+  - {fileID: -3045331307489381733}
+  - {fileID: 5428777461145485076}
+  - {fileID: -2677090193699837260}
+  - {fileID: 1328636779338486736}
+  - {fileID: -1831604216533963325}
+  - {fileID: -7382912795936883386}
+  - {fileID: 6933588815831252339}
   - {fileID: 2961848027318845794}
+  - {fileID: -4435648649801302254}
+  - {fileID: 3015174438401245282}
   root: {fileID: 0}
 --- !u!114 &1328636779338486736
 MonoBehaviour:
@@ -384,7 +414,7 @@ MonoBehaviour:
   m_Name: Play UI Record
   m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:PlayUIRecord
   graph: {fileID: 11400000}
-  position: {x: -408, y: -152}
+  position: {x: -440, y: -152}
   ports:
     keys:
     - startNode
@@ -407,7 +437,10 @@ MonoBehaviour:
       _node: {fileID: 2961848027318845794}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: children 1
+        node: {fileID: 3015174438401245282}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -424,6 +457,71 @@ MonoBehaviour:
   title: "\u64AD\u653EUI\u5F55\u50CF"
   recordFileName: 
   fileSuffix: json
+--- !u!114 &3015174438401245282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Sequence
+  m_EditorClassIdentifier: Assembly-CSharp:XNode.AutoTest:Sequence
+  graph: {fileID: 11400000}
+  position: {x: -808, y: -392}
+  ports:
+    keys:
+    - parent
+    - children
+    - children 0
+    - children 1
+    values:
+    - _fieldName: parent
+      _node: {fileID: 3015174438401245282}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: children
+      _node: {fileID: 3015174438401245282}
+      _typeQualifiedName: System.Collections.Generic.List`1[[XNode.AutoTest.BehaviourTreeGraphConnection,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: children 0
+      _node: {fileID: 3015174438401245282}
+      _typeQualifiedName: System.Collections.Generic.List`1[[XNode.AutoTest.BehaviourTreeGraphConnection,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: children 1
+      _node: {fileID: 3015174438401245282}
+      _typeQualifiedName: System.Collections.Generic.List`1[[XNode.AutoTest.BehaviourTreeGraphConnection,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: parent
+        node: {fileID: 2961848027318845794}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  title: "\u590D\u5408\u8282\u70B9"
+  children: []
 --- !u!114 &5428777461145485076
 MonoBehaviour:
   m_ObjectHideFlags: 0

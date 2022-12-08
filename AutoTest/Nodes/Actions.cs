@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using xNode.AutoTest;
 
 namespace XNode.AutoTest
 {
@@ -64,7 +65,7 @@ namespace XNode.AutoTest
         public void ExportUIRecord()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "UIRecord"));
-            string path = EditorUtility.SaveFilePanel("Export UI Record", dir, "record_file", "json");
+            string path = EditorUtility.SaveFilePanel("Export UI Record", dir, recordFileName, "json");
             if (path.Length == 0) return;
 
             Hashtable jsonData = new Hashtable();
@@ -79,7 +80,7 @@ namespace XNode.AutoTest
             jsonData.Add("recordTick", Time.time); // TODO
             jsonData.Add("fileName", path);
             jsonData.Add("opers", operArray); // TODO 需支持Object导出json
-            string jsonContent = StringUtil.HashtableToJson(jsonData);
+            string jsonContent = AutoTestUtils.HashtableToJson(jsonData);
             if (string.IsNullOrEmpty(jsonContent))
             {
                 EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("UI录像数据为空，无法导出"), "确认");

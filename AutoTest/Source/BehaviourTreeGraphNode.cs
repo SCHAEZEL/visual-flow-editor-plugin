@@ -52,10 +52,9 @@ namespace XNode.AutoTest
         /// 获取所有子节点
         /// </summary>
         /// <returns></returns>
-        public virtual Hashtable GetChildren()
+        public virtual ArrayList GetChildren()
         {
-            Hashtable children = new Hashtable();
-
+            ArrayList children = new ArrayList();
             for (var i = 0; i < Size; i++)
             {
                 BehaviourTreeGraphNode connectedNode;
@@ -65,7 +64,7 @@ namespace XNode.AutoTest
                     continue;
                 else
                     connectedNode = port.Connection.node as BehaviourTreeGraphNode;
-                children.Add(i + 1, connectedNode.id);
+                children.Add(connectedNode.id);
             }
             return children;
         }

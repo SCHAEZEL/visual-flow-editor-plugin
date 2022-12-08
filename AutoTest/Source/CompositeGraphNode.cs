@@ -31,12 +31,11 @@ namespace XNode.AutoTest
                 var size = 0;
                 for (var i = 0; i < childrenCount; i++)
                 {
-                    var port = GetOutputPort(string.Format(AutoTestDefine.ChildrenPortNameFormat, i));
-                    var connectedNode = port.Connection.node as BehaviourTreeGraphNode;
+                    BehaviourTreeGraphNode connectedNode = GetChildAt(i);
                     if (connectedNode == null) continue;
                     size++;
                 }
-                return size;
+                return size == 0 ? -1 : size;
             }
         }
 

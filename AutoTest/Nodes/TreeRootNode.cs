@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System.Text;
-using LuaInterface;
+using XNode.AutoTest;
 
 #if UNITY_2019_1_OR_NEWER && USE_ADVANCED_GENERIC_MENU
 using GenericMenu = XNodeEditor.AdvancedGenericMenu;
@@ -91,9 +91,11 @@ namespace XNode.AutoTest
             {
                 string jsonData = GetJsonData();
                 File.WriteAllText(path, jsonData, Encoding.UTF8);
-                EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("该行为树已导出LUA格式文件\n路径：{0}", path), "确认");
+                if (AutoTestUtils.Confirm(string.Format("该行为树已导出JSON格式文件路径：\n{0}", path), "打开文件", "关闭"))
+                    AutoTestUtils.OpenFileWithExplorer(path);
             }
         }
+
 
         /// <summary>
         /// Export behavior tree with LUA wrap.
@@ -109,7 +111,9 @@ namespace XNode.AutoTest
                 luaData.Append(GetJsonData());
                 luaData.Append("]]");
                 File.WriteAllText(path, luaData.ToString(), Encoding.UTF8);
-                EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle, string.Format("该行为树已导出LUA格式文件\n路径：{0}", path), "确认");
+
+                if (AutoTestUtils.Confirm(string.Format("该行为树已导出LUA格式文件路径：\n{0}", path), "打开文件", "关闭"))
+                    AutoTestUtils.OpenFileWithExplorer(path);
             }
         }
 
@@ -119,7 +123,7 @@ namespace XNode.AutoTest
             ht.Add("title", title);
             ht.Add("root", root);
             ht.Add("nodes", GetNodesList());
-            return StringUtil.HashtableToJson(ht);
+            return AutoTestUtils.ToJson(ht);
         }
     }
 }

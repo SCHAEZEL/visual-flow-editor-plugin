@@ -30,6 +30,10 @@ namespace XNode.AutoTest
             treeIndex = treeCount;
         }
 
+        /// <summary>
+        /// 根节点
+        /// </summary>
+        /// <value></value>
         public string root
         {
             get

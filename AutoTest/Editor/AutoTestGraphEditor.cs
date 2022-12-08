@@ -51,6 +51,7 @@ namespace XNode.AutoTest
                 var perNumInLine = 15;
                 var nodeSize = 300;
                 Node lastNode = null;
+                var t = data["opers"] as ArrayList;
                 foreach (Hashtable m in data["opers"] as ArrayList)
                 {
                     var pos = new Vector2((i % perNumInLine) * nodeSize, (i / perNumInLine) * nodeSize);
@@ -61,6 +62,7 @@ namespace XNode.AutoTest
                     node.ctrlName = m["ctrlName"] as string;
                     node.recordTick = Convert.ToInt32(m["recordTick"]);
                     node.eventType = m["eventType"] as string;
+                    node.packageName = m["packageName"] as string;
 
                     if (lastNode != null)
                     {

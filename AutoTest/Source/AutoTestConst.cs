@@ -13,4 +13,5 @@ namespace XNode.AutoTest
     public enum MathType { Add, Subtract, Multiply, Divide }
     public enum NodeType { CompositeNode, ActionNode, DecoratorNode }
     public enum ChainType { Begin, Running, End };
+    // public enum FileType { Json, Lua }
 }

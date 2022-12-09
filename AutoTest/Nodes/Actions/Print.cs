@@ -16,7 +16,7 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/打印")]
     public class Print : ActionGraphNode
     {
-        public override string description => "执行Lua代码";
+        public override string description => "打印";
         public string text = "";
         public override Hashtable GetProperties()
         {

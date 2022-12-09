@@ -14,19 +14,21 @@ namespace XNode.AutoTest
         public static string ToJson(Hashtable hr, int readcount = 0)
         {
             string json = "{";
+            int count = 0;
             foreach (DictionaryEntry row in hr)
             {
                 try
                 {
+                    count++;
                     string key = "\"" + row.Key + "\":";
                     if (row.Value is Hashtable)
                     {
                         Hashtable t = (Hashtable)row.Value;
                         if (t.Count > 0)
                         {
-                            json += key + ToJson(t, readcount++) + ",";
+                            json += key + ToJson(t, readcount++);
                         }
-                        else { json += key + "{},"; }
+                        else { json += key + "{}"; }
                     }
                     else if (row.Value is ArrayList)
                     {
@@ -34,12 +36,14 @@ namespace XNode.AutoTest
                     }
                     else
                     {
-                        string value = "\"" + row.Value.ToString() + "\",";
+                        string value = "\"" + row.Value.ToString() + "\"" ;
                         json += key + value;
                     }
+
+                    /// <summary> 补充逗号 </summary>
+                    json += (count != hr.Count ? "," : "");
                 }
                 catch { }
-
             }
 
             json = json + "}";
@@ -49,16 +53,18 @@ namespace XNode.AutoTest
         public static string ArrayListToJson(ArrayList array)
         {
             string json = "[";
+            int count = 0;
             foreach (var each in array)
             {
+                count++;
                 if (each is Hashtable)
                     json += ToJson(each as Hashtable);
                 else if (each is string)
                     json += "\"" + each as string + "\"";
-                json += ",";
+                json += count == array.Count ? "" : ",";
             }
 
-            json = json + "],";
+            json += "]";
             return json;
         }
 

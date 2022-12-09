@@ -1,5 +1,47 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8634173065222355315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528f8cc0e4e078942bd4077fad1a41a9, type: 3}
+  m_Name: Print
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 648, y: 232}
+  ports:
+    keys:
+    - parent
+    - child
+    values:
+    - _fieldName: parent
+      _node: {fileID: -8634173065222355315}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -1706426730530905461}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: -8634173065222355315}
+      _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  title: "\u6253\u5370"
+  text: "repeater\u6D4B\u8BD5"
 --- !u!114 &-8438522969348060465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +55,7 @@ MonoBehaviour:
   m_Name: Tree Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: 40}
+  position: {x: -408, y: 56}
   ports:
     keys:
     - child
@@ -24,13 +66,13 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: 4438828141574774671}
+        node: {fileID: -1620605001942568446}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  title: Hangup all area
+  title: Run Gm Codes
 --- !u!114 &-1706426730530905461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +110,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: -42410369369043344}
+        node: {fileID: -8634173065222355315}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -101,7 +143,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: child
-        node: {fileID: 4438828141574774671}
+        node: {fileID: -8438522969348060465}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -147,10 +189,7 @@ MonoBehaviour:
       _node: {fileID: -42410369369043344}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: child
-        node: {fileID: -1706426730530905461}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -165,6 +204,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   title: "\u524D\u5F80\u4E0B\u4E00\u4E2A\u6302\u673A\u70B9"
+  duration: 40
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +223,7 @@ MonoBehaviour:
   - {fileID: 4438828141574774671}
   - {fileID: -42410369369043344}
   - {fileID: -1706426730530905461}
+  - {fileID: -8634173065222355315}
 --- !u!114 &4438828141574774671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +237,7 @@ MonoBehaviour:
   m_Name: Play UI Record
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -376, y: 40}
+  position: {x: -472, y: 280}
   ports:
     keys:
     - startNode
@@ -216,10 +257,7 @@ MonoBehaviour:
       _node: {fileID: 4438828141574774671}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: child
-        node: {fileID: -8438522969348060465}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -228,10 +266,7 @@ MonoBehaviour:
       _node: {fileID: 4438828141574774671}
       _typeQualifiedName: XNode.AutoTest.BehaviourTreeGraphConnection, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: parent
-        node: {fileID: -1620605001942568446}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0

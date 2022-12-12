@@ -150,6 +150,12 @@ namespace XNode.AutoTest
         public BehaviourTreeGraphNode GetChildAt(int index)
         {
             BehaviourTreeGraphNode node = null;
+            if (index == 0)
+            {
+                node = GetChild();
+                if (node != null)
+                    return node;
+            }
             string portName = string.Format(ChildrenPortNameFormat, index);
             NodePort port = GetOutputPort(portName);
             if (port != null)

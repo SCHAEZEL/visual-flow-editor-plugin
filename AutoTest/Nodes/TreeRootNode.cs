@@ -51,20 +51,14 @@ namespace XNode.AutoTest
                 /// Enqueue all children nodes.
                 if (node.Size == -1)
                 {
-                    EditorUtility.DisplayDialog(AutoTestDefine.WinformTitle,
-                        string.Format("缺失子节点，错误内容:\n name:{0}, id:{1}", node.name, node.id), "确认");
+                    AutoTestUtils.Confirm(string.Format("缺失子节点，错误内容:\n name:{0}, id:{1}\n请重试！", node.name, node.id), "确认");
                     return allNodes;
                 }
                 for (var i = 0; i < node.Size; i++)
                 {
-                    BehaviourTreeGraphNode connectedNode;
-                    var potName = node.nodeType == NodeType.CompositeNode ? string.Format(AutoTestDefine.ChildrenPortNameFormat, i) : AutoTestDefine.ChildPortNameFormat;
-                    var port = node.GetOutputPort(potName);
-                    if (port == null)
-                        continue;
-                    else
-                        connectedNode = port.Connection.node as BehaviourTreeGraphNode;
-                    queue.Enqueue(connectedNode);
+                    BehaviourTreeGraphNode connectedNode = node.GetChildAt(i);
+                    if (connectedNode != null)
+                        queue.Enqueue(connectedNode);
                 }
                 allNodes.Add(node.id, node.ExportNode());
             }
@@ -95,10 +89,7 @@ namespace XNode.AutoTest
         public void ExportTreeInLua()
         {
             string dir = Path.Combine(Application.dataPath.Replace("Assets", "AutoTestScripts/BTScripts"));
-            // string dir = Path.Combine(Application.dataPath.Replace("Assets", "Behavior3\\Scripts"));
-            // string[] paths = new string[2] { Application.dataPath.Replace("Assets", "Behavior3"), "Scripts" };
-            // string dir = Path.Combine(paths);
-            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, ("Test_" + title).Replace(" ", ""), "lua");
+            string path = EditorUtility.SaveFilePanel("Export Behavior Tree File", dir, ("test_" + title).Replace(" ", ""), "lua");
             if (path.Length != 0)
             {
                 StringBuilder luaData = new StringBuilder("return [[");
@@ -118,6 +109,10 @@ namespace XNode.AutoTest
             ht.Add("root", root);
             ht.Add("nodes", GetNodesList());
             return AutoTestUtils.ToJson(ht);
+        }
+
+        public override object GetValue(NodePort port) {
+            return null;
         }
     }
 }

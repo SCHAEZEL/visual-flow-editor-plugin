@@ -29,7 +29,7 @@ namespace XNode.AutoTest
             get
             {
                 var size = 0;
-                for (var i = 0; i < childrenCount; i++)
+                for (var i = 0; i < children.Count; i++)
                 {
                     BehaviourTreeGraphNode connectedNode = GetChildAt(i);
                     if (connectedNode == null) continue;

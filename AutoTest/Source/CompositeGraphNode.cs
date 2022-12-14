@@ -20,8 +20,9 @@ namespace XNode.AutoTest
         public override string id => string.Format(IdFormat, nodeIndex);
         static int compositeNodeCount = 0;
         [SerializeField, Output(dynamicPortList = true)] List<BehaviourTreeGraphConnection> children;
+        public string memo = "备注";
         int childrenCount;
-        public override NodeType nodeType => NodeType.CompositeNode;
+        public override NodeType nodeType => NodeType.Composite;
         public override bool isEnableDynamicPort => true;
 
         public override int Size

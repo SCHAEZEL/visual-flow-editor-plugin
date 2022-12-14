@@ -18,7 +18,7 @@ namespace XNode.AutoTest
         public virtual string scope => "node";
         public virtual string id => string.Format(AutoTestDefine.DefaultNodeIdFormat, globalIndex);
         public virtual string nodeName => "DefaultNode";
-        public virtual NodeType nodeType => NodeType.ActionNode;
+        public virtual NodeType nodeType => NodeType.Action;
         public virtual Hashtable properties => GetProperties();
         public virtual bool isEnableDynamicPort => false;
 
@@ -43,7 +43,6 @@ namespace XNode.AutoTest
         /// </summary>
         protected override void Init()
         {
-            // title = description;
             numChildren++;
             globalIndex = numChildren;
         }
@@ -58,7 +57,7 @@ namespace XNode.AutoTest
             for (var i = 0; i < Size; i++)
             {
                 BehaviourTreeGraphNode connectedNode;
-                var potName = nodeType == NodeType.CompositeNode ? string.Format(ChildrenPortNameFormat, i) : ChildPortNameFormat;
+                var potName = nodeType == NodeType.Composite ? string.Format(ChildrenPortNameFormat, i) : ChildPortNameFormat;
                 var port = GetOutputPort(potName);
                 if (port == null)
                     continue;
@@ -105,6 +104,7 @@ namespace XNode.AutoTest
             ht.Add("description", description);
             ht.Add("name", name.Replace(" ", "")); // Names from Node contains spaces between words.
             ht.Add("children", GetChildren());
+            ht.Add("type", nodeType);
             return ht;
         }
 

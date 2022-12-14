@@ -3,10 +3,11 @@ using System.Collections;
 namespace XNode.AutoTest
 {
 
-    [CreateNodeMenu("Decorators/RepeatUntilFailure")]
-    public class RepeatUntilFailure : DecoratorGraphNode
+    [CreateNodeMenu("Decorators/RepeatUntilSuccess")]
+    public class RepeatUntilSuccess : DecoratorGraphNode
     {
-        public override string description => "运行直至返回失败";
+        public override string description => "运行直至成功";
+
         public int maxLoop = 1;
         public NeedLog needLog = NeedLog.True;
 

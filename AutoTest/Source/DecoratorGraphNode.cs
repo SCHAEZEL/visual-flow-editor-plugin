@@ -20,7 +20,7 @@ namespace XNode.AutoTest
 
         static int decoratorNodeCount = 0;
         int childrenCount;
-        public override NodeType nodeType => NodeType.DecoratorNode;
+        public override NodeType nodeType => NodeType.Decorator;
         protected override void Init()
         {
             base.Init();

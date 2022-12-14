@@ -6,6 +6,6 @@ using UnityEngine;
 
 namespace XNode.AutoTest
 {
-    [CreateAssetMenu(fileName = "New BehaviourTree Graph", menuName = "xNode Examples/BehaviourTree Graph")]
+    [CreateAssetMenu(fileName = "New BehaviourTree Graph", menuName = "xNode Graph/BehaviourTree Graph")]
     public class BehaviourTreeGraph : NodeGraph { }
 }

@@ -4,6 +4,6 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Composites/Selector")]
     public class Selector : CompositeGraphNode
     {
-        public override string description => "";
+        public override string description => "或";
     }
 }

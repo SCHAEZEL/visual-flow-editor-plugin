@@ -10,12 +10,12 @@ namespace XNode.AutoTest
     public class ClickBtn : ActionGraphNode
     {
         public override string description => "点击按钮";
-        public string packageName;
+        [HideInInspector] public string packageName;
         public string uiName;
         public string ctrlName;
-        public int recordTick;
-        public string eventType;
-        [HideInInspector] public string btnText;
+        public string btnText;
+        [HideInInspector] public int recordTick;
+        [HideInInspector] public string eventType = "onClick";
 
         public override Hashtable GetProperties()
         {

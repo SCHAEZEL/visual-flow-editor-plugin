@@ -13,9 +13,9 @@ namespace XNode.AutoTest
     /// <summary>
     /// Behavior3内置Action
     /// </summary>
-    [CreateNodeMenu("Action/返回失败")]
+    [CreateNodeMenu("Action/Failer")]
     public class Failer : ActionGraphNode
     {
-        public override string description => "";
+        public override string description => "返回失败";
     }
 }

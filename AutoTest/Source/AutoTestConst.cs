@@ -11,7 +11,7 @@ namespace XNode.AutoTest
 
     }
     public enum MathType { Add, Subtract, Multiply, Divide }
-    public enum NodeType { CompositeNode, ActionNode, DecoratorNode }
+    public enum NodeType { Composite, Action, Decorator }
     public enum ActionType { Begin, Running, End }
     public enum NeedLog { True, False }
     public enum UIAtion { Click, Slide }

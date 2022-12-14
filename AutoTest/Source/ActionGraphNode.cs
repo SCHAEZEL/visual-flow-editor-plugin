@@ -18,7 +18,7 @@ namespace XNode.AutoTest
         public override string id => string.Format(IdFormat, nodeIndex);
         static int actionNodeCount = 0;
         int childrenCount;
-        public override NodeType nodeType => NodeType.ActionNode;
+        public override NodeType nodeType => NodeType.Action;
 
         protected override void Init()
         {

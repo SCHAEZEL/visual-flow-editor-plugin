@@ -15,6 +15,6 @@ namespace XNode.AutoTest
     [CreateNodeMenu("Action/返回完成")]
     public class Succeeder : ActionGraphNode
     {
-        public override string description => "";
+        public override string description => "返回完成";
     }
 }

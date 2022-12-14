@@ -48,7 +48,7 @@ namespace XNode.AutoTest
                 BehaviourTreeGraphNode node = queue.Dequeue() as BehaviourTreeGraphNode;
                 if (node == null) continue;
 
-                /// Enqueue all children nodes.
+                // Enqueue all children nodes.
                 if (node.Size == -1)
                 {
                     AutoTestUtils.Confirm(string.Format("缺失子节点，错误内容:\n name:{0}, id:{1}\n请重试！", node.name, node.id), "确认");
@@ -65,9 +65,7 @@ namespace XNode.AutoTest
             return allNodes;
         }
 
-        /// <summary>
-        /// Export behavior tree with JSON format.
-        /// </summary>
+        /// <summary> Export behavior tree with JSON format. </summary>
         [ContextMenu("Export Tree in JSON")]
         public void ExportTreeInJson()
         {
@@ -96,7 +94,6 @@ namespace XNode.AutoTest
                 luaData.Append(GetJsonData());
                 luaData.Append("]]");
                 File.WriteAllText(path, luaData.ToString(), Encoding.UTF8);
-
                 if (AutoTestUtils.Confirm(string.Format("该行为树已导出LUA格式文件路径：\n{0}", path), "打开文件", "关闭"))
                     AutoTestUtils.OpenFileWithExplorer(path);
             }

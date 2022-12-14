@@ -60,7 +60,7 @@ namespace XNode.AutoTest
                 if (each is Hashtable)
                     json += ToJson(each as Hashtable);
                 else if (each is string)
-                    json += "\"" + each as string + "\"";
+                    json += "\"" + (each as string) + "\"";
                 json += count == array.Count ? "" : ",";
             }
 

@@ -13,15 +13,20 @@ namespace XNode.AutoTest
     /// <summary>
     /// 遍历列表
     /// </summary>
-    [NodeWidth(250)]
+    [NodeWidth(300)]
     [SerializeField, CreateNodeMenu("Action/遍历列表")]
     public class ForEachInList : ActionGraphNode
     {
         public override string description => "遍历列表";
         public string uiName = "";
-        public string listName = "";
+        // public string listName = "";
+        public string pathFormat = "";
+
+        /// <summary>
+        /// 只允许单一自增变量
+        /// </summary> 
         public int startIndex = 0;
-        public string btnName = "Button_GO";
+        // public string btnName = "Button_GO";
         public UIAtion action = UIAtion.Click;
 
         /// <summary> 
@@ -30,11 +35,14 @@ namespace XNode.AutoTest
         public override Hashtable GetProperties()
         {
             Hashtable properties = new Hashtable();
-
-            /// <summary> example: WorldMap_HangUp/List_LevelPoint:0/Button_GO </summary>
-            string format = string.Format("{0}/{1}:%s/{3}", uiName, listName, startIndex, btnName);
-            properties.Add("pathFormat", format);
+            properties.Add("uiName", uiName);
+            properties.Add("action", action);
+            // properties.Add("btnName", btnName);
+            // properties.Add("listName", listName);
             properties.Add("startIndex", startIndex);
+
+            /// <summary> example: List_LevelPoint:0/Button_GO </summary>
+            properties.Add("pathFormat", pathFormat);
             return properties;
         }
 
